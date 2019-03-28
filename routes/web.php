@@ -18,3 +18,8 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
+
+Route::resource('election', 'ElectionController')->middleware('auth');
+Route::get('/election/{election}/config', 'ElectionController@config')->middleware('auth');
+
+Route::resource('election_post', 'ElectionPostController')->middleware('auth');
